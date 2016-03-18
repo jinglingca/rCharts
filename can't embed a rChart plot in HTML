@@ -1,0 +1,20 @@
+Can you help me with my issue. My Rstudio can't embed the rChart plot in HTML. This code can run though, but output didn't show up any plot.
+please help me with it.
+```{r results='asis',comment = NA}
+library(knitr)
+library(rMaps)
+library(rCharts)
+library(datamap)
+library(leaflet)
+require(devtools)
+i3 <- ichoropleth(Crime ~ State, data = subset(violent_crime, Year == 2010),
+                  geographyConfig=list(popupTemplate="#!function(geo, data) {
+                                       return '<div class=\"hoverinfo\"><strong>'+
+                                       data.State+
+                                       '<br>' + data.Crime+
+                                       '</strong></div>';}!#"))
+i3$show("iframesrc", cdn = TRUE)  
+
+
+```
+
